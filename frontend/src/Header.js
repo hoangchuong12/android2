@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 12,
     backgroundColor: '#3498db',
+    marginTop: 30,
   },
   searchBar: {
     flexDirection: 'row',

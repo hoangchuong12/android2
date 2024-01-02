@@ -3,19 +3,16 @@ import React from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-
-
-
-import Feed from './src/Body/Feed';
-import Notifications from './src/Body/Notifications';
-import Profile from './src/Body/Profile';
+import Feed from './src/Body/feed/Feed';
+import Notifications from './src/Body/notifications/Notifications';
+import Profile from './src/Body/profile/Profile';
 const Tab = createMaterialBottomTabNavigator();
 
 
 export default function App() {
   return (
     <NavigationContainer>
-  
+
       <Tab.Navigator
         initialRouteName="Feed"
         activeColor="#e91e63"
@@ -43,7 +40,7 @@ export default function App() {
         />
         <Tab.Screen
           name="Profile"
-          component={Profile} 
+          component={Profile}
           options={{
             tabBarLabel: 'Profile',
             tabBarIcon: ({ color }) => (
@@ -51,7 +48,7 @@ export default function App() {
             ),
           }}
         />
-     
+
       </Tab.Navigator>
     </NavigationContainer>
   );
