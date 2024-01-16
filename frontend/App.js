@@ -1,18 +1,24 @@
 import React from 'react';
-
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import Feed from './src/Body/feed/Feed';
-import Notifications from './src/Body/notifications/Notifications';
+import NotificationsScreen from './src/Body/notifications/Notifications';
 import Profile from './src/Body/profile/Profile';
-const Tab = createMaterialBottomTabNavigator();
 
+const Tab = createMaterialBottomTabNavigator();
+const Stack = createStackNavigator();
+
+const NotificationsStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen name="NotificationsScreen" component={NotificationsScreen} options={{ headerShown: false }} />
+  </Stack.Navigator>
+);
 
 export default function App() {
   return (
     <NavigationContainer>
-
       <Tab.Navigator
         initialRouteName="Feed"
         activeColor="#e91e63"
@@ -30,11 +36,11 @@ export default function App() {
         />
         <Tab.Screen
           name="Notifications"
-          component={Notifications}
+          component={NotificationsStack}
           options={{
-            tabBarLabel: 'Updates',
+            tabBarLabel: 'cart',
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="bell" color={color} size={26} />
+              <MaterialCommunityIcons name="cart" color={color} size={26} />
             ),
           }}
         />
@@ -48,7 +54,6 @@ export default function App() {
             ),
           }}
         />
-
       </Tab.Navigator>
     </NavigationContainer>
   );

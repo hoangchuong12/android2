@@ -1,8 +1,21 @@
-import React from 'react';
-import { View, StyleSheet, TextInput,Button } from 'react-native';
+import React, { useState } from 'react';
+import { View, StyleSheet, TextInput, Button, FlatList, Text } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import axios from 'axios';
 
 export default function Header() {
+  const [searchText, setSearchText] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleSearch = async () => {
+    try {
+      const response = await axios.get(`https://fakestoreapi.com/products?title=${searchText}`);
+      setSearchResults(response.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.searchBar}>
@@ -10,10 +23,13 @@ export default function Header() {
         <TextInput
           placeholder="Search..."
           style={styles.input}
+          onChangeText={(text) => setSearchText(text)}
+          value={searchText}
         />
+        <Button title="Search" onPress={handleSearch} />
       </View>
       <MaterialCommunityIcons name="cart-plus" color={'#fff'} size={24} />
-      <MaterialCommunityIcons  name="chat-processing-outline" color={'#fff'} size={24} />
+      <MaterialCommunityIcons name="chat-processing-outline" color={'#fff'} size={24} />
     </View>
   );
 }
