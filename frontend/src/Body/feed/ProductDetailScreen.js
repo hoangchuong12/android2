@@ -53,18 +53,21 @@ const ProductDetailScreen = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <Image source={{ uri: productDetail?.image }} style={styles.productImage} />
+
+      <Image source={{ uri: productDetail?.image }} style={[styles.productImage, styles.borderedImage]} />
+
       <Text style={styles.title}>{productDetail?.title}</Text>
       <Text style={styles.price}>Price: ${productDetail?.price}</Text>
       <Text style={styles.description}>Description: {productDetail?.description}</Text>
 
-      {/* Quantity Counter */}
+     
       <View style={styles.quantityContainer}>
-        <TouchableOpacity onPress={decreaseQuantity}>
+        
+        <TouchableOpacity style={styles.quantityButtonContainer} onPress={decreaseQuantity}>
           <Text style={styles.quantityButton}>-</Text>
         </TouchableOpacity>
         <Text style={styles.quantityText}>{quantity}</Text>
-        <TouchableOpacity onPress={increaseQuantity}>
+        <TouchableOpacity style={styles.quantityButtonContainer} onPress={increaseQuantity}>
           <Text style={styles.quantityButton}>+</Text>
         </TouchableOpacity>
       </View>
@@ -80,9 +83,16 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   productImage: {
+
     width: '100%',
     height: 200,
     resizeMode: 'contain',
+  },
+  borderedImage: {
+    marginTop: 30,
+    borderWidth: 2,
+    borderColor: 'gray', 
+    borderRadius: 8,
   },
   title: {
     fontSize: 20,
@@ -102,12 +112,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 16,
   },
+  quantityButtonContainer: {
+    borderWidth: 2,
+    borderColor: 'gray', 
+    borderRadius: 8,
+  },
   quantityButton: {
     fontSize: 24,
     paddingHorizontal: 16,
   },
   quantityText: {
     fontSize: 20,
+    marginHorizontal: 16,
   },
 });
 

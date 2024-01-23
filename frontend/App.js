@@ -6,6 +6,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Feed from './src/Body/feed/Feed';
 import NotificationsScreen from './src/Body/notifications/Notifications';
 import Profile from './src/Body/profile/Profile';
+import Login from './src/Body/profile/Login';
+// // App.js
+import ProfileStackScreen from './src/Body/profile/ProfileStackScreen';
+
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -13,6 +17,12 @@ const Stack = createStackNavigator();
 const NotificationsStack = () => (
   <Stack.Navigator>
     <Stack.Screen name="NotificationsScreen" component={NotificationsScreen} options={{ headerShown: false }} />
+  </Stack.Navigator>
+);
+
+const LoginStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen name="Login" component={Login} />
   </Stack.Navigator>
 );
 
@@ -38,7 +48,7 @@ export default function App() {
           name="Notifications"
           component={NotificationsStack}
           options={{
-            tabBarLabel: 'cart',
+            tabBarLabel: 'Cart',
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="cart" color={color} size={26} />
             ),
@@ -46,7 +56,7 @@ export default function App() {
         />
         <Tab.Screen
           name="Profile"
-          component={Profile}
+          component={ProfileStackScreen}
           options={{
             tabBarLabel: 'Profile',
             tabBarIcon: ({ color }) => (

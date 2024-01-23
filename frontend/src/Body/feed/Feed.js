@@ -144,30 +144,30 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5', // Set the background color of the screen
+    backgroundColor: '#f5f5f5', 
   },
   productItemContainer: {
     width: itemWidth,
-    marginBottom: marginBetweenItems * 2, // Space at the bottom of each item
+    marginBottom: marginBetweenItems * 2,
   },
   productContainer: {
     borderWidth: 1,
     borderColor: 'grey',
     borderRadius: 4,
     backgroundColor: '#fff',
-    overflow: 'hidden', // Ensure images are contained within the border radius
+    overflow: 'hidden', 
   },
   productTitle: {
     padding: 10,
     paddingBottom: 0,
     color: 'black',
-    fontSize: 14, // Adjust font size as needed
+    fontSize: 14, 
   },
   productPrice: {
     padding: 10,
     color: 'green',
     fontWeight: 'bold',
-    fontSize: 14, // Adjust font size as needed
+    fontSize: 14, 
   },
   productImage: {
     width: '100%',

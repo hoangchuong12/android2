@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity, Button } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation, useRoute } from '@react-navigation/native';
+
 
 const Profile = () => {
+  const navigation = useNavigation();
+  const route = useRoute();
   const [customerInfo, setCustomerInfo] = useState(null);
-
+  const email = route.params?.email;
   useEffect(() => {
     // Simulate fetching customer data from an API
     setTimeout(() => {
       const mockCustomerInfo = {
-        name: 'John Doe',
-        email: 'john.doe@example.com',
+
+        email: email,
         avatar: 'https://example.com/avatar.jpg',
         orders: [
           { id: 1, product: 'Product 1', price: 20 },
@@ -21,7 +25,7 @@ const Profile = () => {
     }, 2000); // Simulated API delay
 
     // Replace the setTimeout block with an actual API call to fetch customer data
-  }, []);
+  }, [email]);
 
   const numberOfOrders = {
     awaitingConfirmation: 2, // Số đơn hàng chờ xác nhận
@@ -90,7 +94,10 @@ const Profile = () => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.loginButton}>
+      <TouchableOpacity
+        style={styles.loginButton}
+        onPress={() => navigation.navigate('Login')}
+      >
         <MaterialCommunityIcons name="login" size={24} color="black" />
       </TouchableOpacity>
       <View style={styles.header}>
@@ -99,6 +106,8 @@ const Profile = () => {
       {customerInfo ? (
         <>
           <Image source={{ uri: customerInfo.avatar }} style={styles.avatar} />
+          <Text style={styles.ordersTitle}>Recent Orders:</Text>
+          <Text style={styles.userInfo}>Email: {customerInfo.email}</Text>
           <Text style={styles.ordersTitle}>Recent Orders:</Text>
           <FlatList
             data={customerInfo.orders}
