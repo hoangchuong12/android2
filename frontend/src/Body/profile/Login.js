@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet, Image } fro
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 
+
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -21,7 +22,6 @@ const Login = () => {
 
         fetchData();
     }, []);
-
     const handleLogin = () => {
         if (!userData) {
             Alert.alert('Error', 'Unable to log in. Please try again later.');
@@ -62,6 +62,10 @@ const Login = () => {
             />
             <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
                 <Text style={styles.loginButtonText}>Login</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.signupButton}  onPress={() => navigation.navigate('Logup')}>
+                <Text style={styles.signupButtonText}>Sign Up</Text>
+               
             </TouchableOpacity>
 
             {userData && (
@@ -119,6 +123,18 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 10,
+    },
+    signupButton: {
+        backgroundColor: '#2ecc71',
+        marginTop: 10,
+        padding: 10,
+        borderRadius: 5,
+        width: '100%',
+    },
+    signupButtonText: {
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
 });
 

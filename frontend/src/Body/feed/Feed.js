@@ -79,6 +79,7 @@ const Feed = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Header />
+      
       <Banner></Banner>
       <Text style={styles.heading}>Categories:</Text>
       {loading ? (
@@ -87,6 +88,7 @@ const Feed = ({ navigation }) => {
 
         <View style={styles.categoriesContainer}>
           <ScrollView horizontal>
+            
           <TouchableOpacity
                     style={styles.categoryButton}
                     onPress={() => setCategory('categories')}

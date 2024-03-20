@@ -62,6 +62,11 @@ const Notifications = ({navigation }) => {
     }
     return total.toFixed(2);
   };
+    const handleCheckout = () => {
+    // Add your checkout logic here
+    // For example, navigate to a Checkout screen
+    navigation.navigate('Checkout', { cartItems });
+  };
 
   return (
     <View style={styles.container}>
@@ -93,6 +98,9 @@ const Notifications = ({navigation }) => {
       <Text style={styles.total}>Total: ${calculateTotalPrice()}</Text>
 
       <Button title="Clear Cart" onPress={clearCart} />
+      <TouchableOpacity style={styles.checkoutButton} onPress={handleCheckout}>
+        <Text style={styles.checkoutButtonText}>Checkout</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -152,6 +160,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginTop: 10,
+  },
+  checkoutButton: {
+    backgroundColor: 'green',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  checkoutButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 
